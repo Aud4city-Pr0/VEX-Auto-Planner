@@ -1,0 +1,6 @@
+Plan for VEX Auto Planner
+Created by Zachary D and Andrew G.
+
+Prioritys:
+1. Create bot movement system w/ physics
+

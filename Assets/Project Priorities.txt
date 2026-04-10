@@ -1,0 +1,7 @@
+Plan for VEX Auto Planner
+Created by Zachary D and Andrew G.
+
+Prioritys:
+1. Create bot movement system w/ physics
+2. Add 3 different camera angles
+3. Add ability to generate code that is useable with ez-temp PID
