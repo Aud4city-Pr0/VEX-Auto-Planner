@@ -10,18 +10,11 @@ public class CamAngleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentAngle == 0)
+        GameObject Angle = GetCurrentAngle(currentAngle);
+        if(Angles != null)
         {
-            GameObject angle = GetCurrentAngle(currentAngle);
-            // setting cam position
-            transform.position = angle.transform.position;
-            transform.rotation = angle.transform.rotation;
-        } else if(currentAngle == 1)
-        {
-            GameObject angle = GetCurrentAngle(currentAngle);
-            // setting cam position
-            transform.position = angle.transform.position;
-            transform.rotation = angle.transform.rotation;
+          transform.position = Angle.transform.position;
+          transform.rotation = Angle.transform.rotation; 
         }
     }
 
