@@ -6,7 +6,7 @@ public class CamButtonScript : MonoBehaviour
     // script vars
     public Camera cam; 
     public Button btn;
-    private bool camToggle = false;
+    private int camToggle = 1;
     private CamAngleController camController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,14 +20,18 @@ public class CamButtonScript : MonoBehaviour
     {
         // making sure function is fired correctly
         Debug.Log("Clicked");
-        if(camToggle == false)
+        if(camToggle == 1)
         {
             camController.currentAngle = 1;
-            camToggle = true;
-        } else if(camToggle == true)
+            camToggle = 2;
+        } else if(camToggle == 2)
         {
             camController.currentAngle = 0;
-            camToggle = false;
+            camToggle = 3;
+        } else if(camToggle == 3)
+        {
+            camController.currentAngle = 2;
+            camToggle = 1;
         }
     }
 }

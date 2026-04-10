@@ -11,7 +11,7 @@ public class CamAngleController : MonoBehaviour
     void Update()
     {
         GameObject Angle = GetCurrentAngle(currentAngle);
-        if(Angles != null)
+        if(Angle != null)
         {
           transform.position = Angle.transform.position;
           transform.rotation = Angle.transform.rotation; 
