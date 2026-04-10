@@ -22,6 +22,7 @@ public class CamButtonScript : MonoBehaviour
         Debug.Log("Clicked");
         if(camToggle == 1)
         {
+            camController.isThirdPerson = false;
             camController.currentAngle = 1;
             camToggle = 2;
         } else if(camToggle == 2)
@@ -31,6 +32,7 @@ public class CamButtonScript : MonoBehaviour
         } else if(camToggle == 3)
         {
             camController.currentAngle = 2;
+            camController.isThirdPerson = true;
             camToggle = 1;
         }
     }
