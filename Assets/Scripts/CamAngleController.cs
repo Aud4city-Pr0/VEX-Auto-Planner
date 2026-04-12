@@ -7,23 +7,38 @@ public class CamAngleController : MonoBehaviour
     public int currentAngle = 0;
     public bool isThirdPerson = false;
     public float speed = 3.5f;
+
+    private float yaw = 0f;
+    private float pitch = 0f;
     
 
     // Update is called once per frame
     void Update()
     {
         GameObject Angle = GetCurrentAngle(currentAngle);
-        if(Angle != null)
-        {
-          transform.position = Angle.transform.position;
-          transform.rotation = Angle.transform.rotation; 
-        }
+        // Set base position
+        transform.position = Angle.transform.position;
 
-        if (Input.GetMouseButton(0) && isThirdPerson == true) { // Checks to see if button is pressed and thrid person mode is enabled
+        // Start from base rotation
+        Quaternion baseRotation = Angle.transform.rotation;
+
+        // Apply mouse rotation if in third person
+        if (Input.GetMouseButton(0) && isThirdPerson)
+        {
             float rotationX = Input.GetAxis("Mouse X") * speed;
             float rotationY = Input.GetAxis("Mouse Y") * speed;
-            transform.Rotate(new Vector3(-rotationY, rotationX, 0));
+
+            // Accumulate rotation
+            yaw += rotationX;
+            pitch -= rotationY;
+
+            // Optional clamp (prevents flipping)
+            pitch = Mathf.Clamp(pitch, -80f, 80f);
         }
+
+        // Combine base + offset rotation
+        Quaternion offsetRotation = Quaternion.Euler(pitch, yaw, 0);
+        transform.rotation = baseRotation * offsetRotation;
     }
 
 
