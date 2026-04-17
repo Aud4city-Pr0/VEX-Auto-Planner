@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PathPlacementSystem : MonoBehaviour
 {
@@ -6,6 +7,17 @@ public class PathPlacementSystem : MonoBehaviour
     public float distance = 1000f;
     public Camera cam;
     private bool canPlace = false;
+    public GameObject pointPrefab;
+    public GameObject phantomPrefab;
+
+    InputAction placeAction;
+    GameObject phantomInstance;
+
+    void Start()
+    {
+        placeAction = InputSystem.actions.FindAction("Interact");
+        phantomInstance = Instantiate(phantomPrefab);
+    }
 
     // Update is called once per frame
     void Update()
@@ -14,6 +26,7 @@ public class PathPlacementSystem : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(mousePos, out hit, distance)) {
+            phantomInstance.transform.position = hit.point;
             if(hit.collider.CompareTag("Placeable"))
             {
                 canPlace = true; 
@@ -22,6 +35,12 @@ public class PathPlacementSystem : MonoBehaviour
                 canPlace = false;
             }
             Debug.Log("place status: " + canPlace);
+
+            // mouse button code
+            if(Mouse.current.leftButton.wasPressedThisFrame && canPlace == true)
+            {
+                Instantiate(pointPrefab, hit.point, Quaternion.identity);
+            }
         } else
         {
             canPlace = false;
