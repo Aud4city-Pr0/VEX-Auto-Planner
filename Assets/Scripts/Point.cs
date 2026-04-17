@@ -25,7 +25,7 @@ public class Point : MonoBehaviour
 
     public static double GetDist(Point a, Point b)
     {
-        return Math.Sqrt( Math.Pow( a.x_coord - b.x_coord, 2 ) + Mathf.Pow( a.y_coord - b.y_coord, 2 ) );
+        return Math.Sqrt( Math.Pow( a.x_coord - b.x_coord, 2 ) + Math.Pow( a.y_coord - b.y_coord, 2 ) );
     }
 
     public static double GetAngle(Point a, Point b)
