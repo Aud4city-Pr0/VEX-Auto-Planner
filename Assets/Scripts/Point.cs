@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 public class Point : MonoBehaviour
 {
     private double x_coord;
@@ -24,14 +25,14 @@ public class Point : MonoBehaviour
 
     public static double GetDist(Point a, Point b)
     {
-        return Mathf.Sqrt( Mathf.Pow( a.x_coord - b.x_coord, 2 ) + Mathf.Pow( a.y_coord - b.y_coord, 2 ) );
+        return Math.Sqrt( Math.Pow( a.x_coord - b.x_coord, 2 ) + Mathf.Pow( a.y_coord - b.y_coord, 2 ) );
     }
 
     public static double GetAngle(Point a, Point b)
     {
-        double x_dif = Mathf.Abs( a.x_coord - b.x_coord );
-        double y_dif = Mathf.Abs( a.y_coord - b.y_coord );
-        double angle = Mathf.Atan( y_dif / x_dif ); // angle in radians
-        return angle*180/Mathf.PI; // converts to degrees
+        double x_dif = Math.Abs( a.x_coord - b.x_coord );
+        double y_dif = Math.Abs( a.y_coord - b.y_coord );
+        double angle = Math.Atan( y_dif / x_dif ); // angle in radians
+        return angle*180/Math.PI; // converts to degrees
     }
 }
