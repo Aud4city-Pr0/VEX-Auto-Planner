@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "VEX Auto Planner.slnx",
+    "dotnet.defaultSolution": "VEX-Auto-Planner.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
