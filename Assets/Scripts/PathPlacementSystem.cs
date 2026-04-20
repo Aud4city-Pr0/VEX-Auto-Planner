@@ -10,6 +10,8 @@ public class PathPlacementSystem : MonoBehaviour
     public GameObject pointPrefab;
     public GameObject phantomPrefab;
 
+    float rotationY = 0f;
+
     InputAction placeAction;
     GameObject phantomInstance;
 
@@ -54,5 +56,7 @@ public class PathPlacementSystem : MonoBehaviour
         {
             PointManager.PointsToCode();
         }
+
+        
     }
 }
