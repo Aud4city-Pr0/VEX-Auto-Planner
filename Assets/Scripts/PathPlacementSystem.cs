@@ -13,10 +13,13 @@ public class PathPlacementSystem : MonoBehaviour
     InputAction placeAction;
     GameObject phantomInstance;
 
+    InputAction generateAction;
+
     void Start()
     {
         placeAction = InputSystem.actions.FindAction("Interact");
         phantomInstance = Instantiate(phantomPrefab);
+        generateAction = InputSystem.actions.FindAction("Generate");
     }
 
     // Update is called once per frame
@@ -45,6 +48,11 @@ public class PathPlacementSystem : MonoBehaviour
         } else
         {
             canPlace = false;
+        }
+
+        if(generateAction.IsPressed())
+        {
+            PointManager.PointsToCode();
         }
     }
 }
