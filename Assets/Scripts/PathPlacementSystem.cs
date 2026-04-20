@@ -34,12 +34,13 @@ public class PathPlacementSystem : MonoBehaviour
             {
                 canPlace = false;
             }
-            Debug.Log("place status: " + canPlace);
+            //Debug.Log("place status: " + canPlace);
 
             // mouse button code
             if(Mouse.current.leftButton.wasPressedThisFrame && canPlace == true)
             {
                 Instantiate(pointPrefab, hit.point, Quaternion.identity);
+                PointManager.AddPoint(hit.point.x, hit.point.y);
             }
         } else
         {
