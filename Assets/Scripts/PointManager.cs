@@ -37,7 +37,5 @@ public class PointManager : MonoBehaviour
         }
     }
 
-    public static bool IsEmpty() {
-        return (points.Count == 0);
-    }
+
 }
