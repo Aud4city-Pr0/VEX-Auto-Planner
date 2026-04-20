@@ -26,11 +26,14 @@ public class PointManager : MonoBehaviour
     }
 
     public static void PointsToCode() {
-        for (int i = 0; i < points.Count - 1; i++) {
-            Debug.Log($"chassis.pid_turn_set({Point.GetAngle(points[i], points[i+1])}_deg, 100);");
-            Debug.Log("chassis.pid_wait_quick_chain();");
-            Debug.Log($"chassis.pid_drive_set({Point.GetDist(points[i], points[i+1])}_in, 100);");
-            Debug.Log("chassis.pid_wait();");
+        if (points.Count < 1) {Debug.Log("Add more points!");}
+        else {
+            for (int i = 0; i < points.Count - 1; i++) {
+                Debug.Log($"chassis.pid_turn_set({Point.GetAngle(points[i], points[i+1])}_deg, 100);");
+                Debug.Log("chassis.pid_wait_quick_chain();");
+                Debug.Log($"chassis.pid_drive_set({Point.GetDist(points[i], points[i+1])}_in, 100);");
+                Debug.Log("chassis.pid_wait();");
+            }
         }
     }
 
