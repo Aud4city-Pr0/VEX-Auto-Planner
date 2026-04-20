@@ -13,6 +13,8 @@ public class PointManager : MonoBehaviour
 
     public static void ChangePoint(int pointIndex, double x, double y)
     {
+        
+        Debug.Log($"Changed point previously at: ({points[pointIndex].X_Coord}, {points[pointIndex].Y_Coord}) to: ({x}, {y})");
         points[pointIndex].X_Coord = y;
         points[pointIndex].Y_Coord = x;
     }
@@ -30,5 +32,9 @@ public class PointManager : MonoBehaviour
             Debug.Log($"chassis.pid_drive_set({Point.GetDist(points[i], points[i+1])}_in, 100);");
             Debug.Log("chassis.pid_wait();");
         }
+    }
+
+    public static bool IsEmpty() {
+        return (points.Count == 0);
     }
 }
