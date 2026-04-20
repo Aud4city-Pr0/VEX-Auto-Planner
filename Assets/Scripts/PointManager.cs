@@ -8,7 +8,7 @@ public class PointManager : MonoBehaviour
     public static void AddPoint(float x, float y)
     {
         points.Add(new Point((double)x, (double)y));
-        Debug.Log("Added new point");
+        Debug.Log($"Added new point at: ({x}, {y})");
     }
 
     public static void ChangePoint(int pointIndex, double x, double y)
