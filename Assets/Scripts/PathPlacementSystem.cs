@@ -11,15 +11,13 @@ public class PathPlacementSystem : MonoBehaviour
     public GameObject phantomPrefab;
 
     float rotationY = 0f;
-
-    InputAction placeAction;
     GameObject phantomInstance;
 
     InputAction generateAction;
 
     void Start()
     {
-        placeAction = InputSystem.actions.FindAction("Interact");
+
         phantomInstance = Instantiate(phantomPrefab);
         generateAction = InputSystem.actions.FindAction("Generate");
     }
