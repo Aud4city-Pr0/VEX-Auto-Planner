@@ -15,11 +15,14 @@ public class PathPlacementSystem : MonoBehaviour
 
     InputAction generateAction;
 
+    InputAction rotateAction;
+
     void Start()
     {
 
         phantomInstance = Instantiate(phantomPrefab);
         generateAction = InputSystem.actions.FindAction("Generate");
+        rotateAction = InputSystem.actions.FindAction("Rotate");
     }
 
     // Update is called once per frame
@@ -30,6 +33,13 @@ public class PathPlacementSystem : MonoBehaviour
 
         if (Physics.Raycast(mousePos, out hit, distance)) {
             phantomInstance.transform.position = hit.point;
+            phantomInstance.transform.rotation = new Quaternion(0, rotationY, 0, 0);
+
+            if(rotateAction.IsPressed())
+            {
+                rotationY += 90;
+            }
+
             if(hit.collider.CompareTag("Placeable"))
             {
                 canPlace = true; 
