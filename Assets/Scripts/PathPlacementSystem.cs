@@ -33,7 +33,6 @@ public class PathPlacementSystem : MonoBehaviour
 
         if (Physics.Raycast(mousePos, out hit, distance)) {
             phantomInstance.transform.position = hit.point;
-            phantomInstance.transform.rotation = new Quaternion(0, rotationY, 0, 0);
 
             if(rotateAction.IsPressed())
             {
@@ -48,12 +47,13 @@ public class PathPlacementSystem : MonoBehaviour
                 canPlace = false;
             }
             //Debug.Log("place status: " + canPlace);
+            phantomInstance.transform.Rotate(new Vector3(0, rotationY, 0));
 
             // mouse button code
             if(Mouse.current.leftButton.wasPressedThisFrame && canPlace == true)
             {
-                Instantiate(pointPrefab, hit.point, Quaternion.identity);
-                PointManager.AddPoint(hit.point.x, hit.point.y);
+                GameObject placedPoint = Instantiate(pointPrefab, hit.point, Quaternion.identity);
+                PointManager.AddPoint(placedPoint.transform.position.x * 39.3701f, placedPoint.transform.position.y * 39.3701f);
             }
         } else
         {

@@ -33,6 +33,7 @@ public class Point : MonoBehaviour
         double x_dif = Math.Abs( a.x_coord - b.x_coord );
         double y_dif = Math.Abs( a.y_coord - b.y_coord );
         double angle = Math.Atan( y_dif / x_dif ); // angle in radians
+        Debug.Log("Angle: " + x_dif);
         return angle*180/Math.PI; // converts to degrees
     }
 }
